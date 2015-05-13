@@ -1,1 +1,1 @@
-angular.module('event').controller('', []);
+angular.module('EventApp').controller('EventCtrl', []);
