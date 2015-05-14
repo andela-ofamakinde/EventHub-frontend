@@ -1,5 +1,5 @@
 "use strict";
-var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute']);
+var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute', 'ngResource']);
 
 EventApp.config(['$routeProvider',
   function($routeProvider) {

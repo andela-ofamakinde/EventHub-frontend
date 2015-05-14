@@ -20,8 +20,8 @@
         <md-tab label="CREATE EVENT">
           <md-content class="md-padding">
             <h1 class="md-display-2">To create an event fill the form below and CLICK on SUBMIT</h1>
-            <div layout="column" class="inputdemoIcons">
-              <md-content layout-padding="" class="autoScroll">
+            <div layout class="inputdemoIcons">
+              <md-content flex="80" layout-padding="" class="autoScroll">
                 <md-input-container md-no-float="">
                   <md-icon md-svg-icon="" class="name"></md-icon>
                     <input ng-model="title" type="text" placeholder="Event Name/Title">
@@ -30,7 +30,6 @@
                   <md-icon md-svg-icon="" class="name"></md-icon>
                   <input ng-model="description" type="text" placeholder="What is the Event about">
                 </md-input-container>
-                <md-input-container md-no-float="">
                   <md-icon md-svg-src="" ></md-icon>
                   <md-select name="categories" placeholder="Please select a category" ng-model="category" required="">
                     <md-option value="1">Party</md-option>
@@ -40,7 +39,6 @@
                     <md-option value="2">Vacation</md-option>
                     <md-option value="2">Camping</md-option>
                   </md-select>
-                </md-input-container>
                 <md-input-container md-no-float="">
                   <md-icon md-svg-src=""></md-icon>
                   <input ng-model="Location" type="text" placeholder="Event Location">
