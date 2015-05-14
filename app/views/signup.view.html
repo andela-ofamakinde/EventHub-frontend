@@ -1,25 +1,49 @@
-<div ng-controller="UserCtrl" layout="column" class="inputdemoIcons" ng-app="EventApp">
-  <br>
-  <md-toolbar class="md-primary">
-    <h1 class="md-toolbar-tools">Sign Up</h1>
-  </md-toolbar>
-  <md-content layout-padding="" class="autoScroll">
-    <md-input-container md-no-float="">
-      <md-icon md-svg-icon="assets/images/ic_person_24px.svg" class="name"></md-icon>
-      <input ng-model="firstname" type="text" placeholder="Firstname">
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <md-icon md-svg-icon="assets/images/ic_person_24px.svg" class="name"></md-icon>
-      <input ng-model="lastname" type="text" placeholder="Lastname">
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
-      <input ng-model="user.email" type="email" placeholder="Email" ng-required="true">
-    </md-input-container>
-    <md-input-container md-no-float="">
-      <md-icon md-svg-src="assets/images/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-      <input ng-model="user.address" type="text" placeholder="Password">
-    </md-input-container>
-  </md-content>
+<div ng-controller="UserCtrl" layout layout-align="center center"ng-app="EventApp">
+    <md-card flex='40'>
+      <md-toolbar class="md-primary">
+        <h1 class="md-toolbar-tools">Sign Up</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <md-input-container md-no-float="">
+          <md-icon md-svg-icon="assets/images/ic_person_24px.svg" class="name"></md-icon>
+          <input ng-model="firstname" type="text" placeholder="Firstname">
+        </md-input-container>
+        <md-input-container md-no-float="">
+          <md-icon md-svg-icon="assets/images/ic_person_24px.svg" class="name"></md-icon>
+          <input ng-model="lastname" type="text" placeholder="Lastname">
+        </md-input-container>
+        <md-input-container md-no-float="">
+          <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
+          <input ng-model="user.email" type="email" placeholder="Email" ng-required="true">
+        </md-input-container>
+        <md-input-container md-no-float="">
+          <md-icon md-svg-src="assets/images/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+          <input ng-model="user.address" type="text" placeholder="Password">
+        </md-input-container>
+        <div layout layout-align="center center">
+          <md-button class="md-accent md-raised md-hue-1">Submit</md-button>
+        </div>
+      </md-content>
+    </md-card>
+</div>
 
+<div ng-controller="UserCtrl" layout layout-align="center center"ng-app="EventApp">
+    <md-card flex='40'>
+      <md-toolbar class="md-primary">
+        <h1 class="md-toolbar-tools">Log In</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <md-input-container md-no-float="">
+          <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
+          <input ng-model="user.email" type="email" placeholder="Email" ng-required="true">
+        </md-input-container>
+        <md-input-container md-no-float="">
+          <md-icon md-svg-src="assets/images/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+          <input ng-model="user.address" type="text" placeholder="Password">
+        </md-input-container>
+        <div layout layout-align="center center">
+          <md-button class="md-accent md-raised md-hue-1">Submit</md-button>
+        </div>
+      </md-content>
+    </md-card>
 </div>
