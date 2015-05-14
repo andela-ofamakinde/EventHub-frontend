@@ -1,0 +1,25 @@
+<div ng-controller="UserCtrl" layout="column" class="inputdemoIcons" ng-app="EventApp">
+  <br>
+  <md-toolbar class="md-primary">
+    <h1 class="md-toolbar-tools">Sign Up</h1>
+  </md-toolbar>
+  <md-content layout-padding="" class="autoScroll">
+    <md-input-container md-no-float="">
+      <md-icon md-svg-icon="assets/images/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="firstname" type="text" placeholder="Firstname">
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <md-icon md-svg-icon="assets/images/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="lastname" type="text" placeholder="Lastname">
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
+      <input ng-model="user.email" type="email" placeholder="Email" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float="">
+      <md-icon md-svg-src="assets/images/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+      <input ng-model="user.address" type="text" placeholder="Password">
+    </md-input-container>
+  </md-content>
+
+</div>
