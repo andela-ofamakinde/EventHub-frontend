@@ -1,12 +1,60 @@
 <div ng-controller="EventCtrl">
   <md-toolbar class="md-theme-light">
-    <h2 class="md-toolbar-tools">
-      <span>EVENTS CATEGORY</span>
-    </h2>
+    <div class="md-toolbar-tools" class="md-actions" layout="row" layout-align="center center">
+    <div class="md-actions" layout="row" layout-align="left left">
+      <span>EVENTS PAGE</span>
+    </div>
+    </div>
   </md-toolbar>
-  <div class="md-actions" layout="row" layout-align="center center">
-    <md-button class="md-warn md-raised md-hue-2">Create an Event</md-button>
-    <md-button class="md-warn md-raised md-hue-2">Join an event</md-button>
-    <md-button class="md-warn md-raised md-hue-2">View event</md-button>
-  </div>
+
+  <div class="tabsdemoDynamicHeight">
+  <md-content class="md-padding">
+    <md-tabs md-dynamic-height="" md-border-bottom="">
+      <md-tab label="Welcome">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Welcome</h1>
+          <p>Create your AWESOME events on EventHub or Join Events already created.</p>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="CREATE EVENT">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">To create an event fill the form below and CLICK on SUBMIT</h1>
+          <div layout="column" class="inputdemoIcons">
+            <md-content layout-padding="" class="autoScroll">
+              <md-input-container md-no-float="">
+                <md-icon md-svg-icon="" class="name"></md-icon>
+                  <input ng-model="title" type="text" placeholder="Event Name/Title">
+              </md-input-container>
+              <md-input-container md-no-float="">
+                <md-icon md-svg-icon="" class="name"></md-icon>
+                <input ng-model="description" type="text" placeholder="What is the Event about">
+              </md-input-container>
+              <md-input-container md-no-float="">
+                <md-icon md-svg-src=""></md-icon>
+                <input ng-model="category" type="text" placeholder="Category" ng-required="true">
+              </md-input-container>
+              <md-input-container md-no-float="">
+                <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
+                <input ng-model="startdate" type="text" placeholder="Startdate">
+              </md-input-container>
+              <md-input-container md-no-float="">
+                <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
+                <input ng-model="startdate" type="text" placeholder="Startdate">
+              </md-input-container>
+            </md-content>
+          </div>
+          <md-button class="md-warn md-raised md-hue-2">Submit</md-button>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="Join Event">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Join An Event</h1>
+          <p>All Event Categories</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
 </div>

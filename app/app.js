@@ -4,7 +4,7 @@ var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute']);
 EventApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-    when('/homeview', {
+    when('/home', {
       templateUrl: 'app/views/home.view.html'
     }).
     when('/events', {
@@ -16,6 +16,6 @@ EventApp.config(['$routeProvider',
       controller: 'UserCtrl'
     }).
      otherwise({
-      redirectTo: '/homeview'
+      redirectTo: '/home'
     });
 }]);
