@@ -88,6 +88,15 @@
           <md-content class="md-padding">
             <h1 class="md-display-2">Join An Event</h1>
             <p>All Event Categories</p>
+            <ul ng-repeat = 'info in data'>
+              <li>{{info.title}}</li>
+              <li>{{info.description}}</li>
+              <li>{{info.category}}</li>
+              <li>{{info.startdate | date: mm:dd:yy}}</li>
+              <li>{{info.enddate | date: mm:dd:yy}}</li>
+              <li>{{info._id}}</li>
+              <md-button class="md-warn md-raised md-hue-2" onclick = "getEvent(info._id)">View Event</md-button>
+            </ul>
           </md-content>
         </md-tab>
       </md-tabs>
