@@ -1,2 +1,2 @@
 "use strict";
-angular.module('events').factory('event-services',[]);
+angular.module('EventApp').factory('EventServ',[]);

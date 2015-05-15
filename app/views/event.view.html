@@ -1,10 +1,11 @@
 <div ng-controller="EventCtrl">
-  <md-toolbar class="md-theme-light">
-    <div class="md-toolbar-tools" class="md-actions" layout="row" layout-align="left">
-    <div class="md-actions" layout="row" layout-align="left left">
-      <span>EVENTS PAGE</span>
+  <md-toolbar class="md-theme-light" class="md-primary">
+  <div class="md-toolbar-tools" class="md-actions" layout="row" layout-align="left">
+    <h1 class="md-toolbar-tools">EVENTS PAGE</h1>
+    <div class="md-actions" layout-align="center center">
+      <a href = '#/home'>Home</a>
     </div>
-    </div>
+  </div>
   </md-toolbar>
 
   <div class="tabsdemoDynamicHeight">
@@ -24,15 +25,15 @@
             <md-card flex='40'>
             <div layout="column" class="inputdemoIcons">
               <md-content layout-padding="" class="autoScroll">
-                <md-input-container md-no-float="">
+                <md-input-container>
                   <md-icon md-svg-icon="" class="name"></md-icon>
                     <input ng-model="title" type="text" placeholder="Event Name/Title">
                 </md-input-container>
-                <md-input-container md-no-float="">
+                <md-input-container>
                   <md-icon md-svg-icon="" class="name"></md-icon>
                   <textarea ng-model="description" type="text" placeholder="What is the Event about"></textarea>
                 </md-input-container>
-                <md-input-container md-no-float="">
+                <md-input-container>
                   <md-icon md-svg-src="" ></md-icon>
                   <md-select name="categories" placeholder="Please select a category" ng-model="category" required="">
                     <md-option value="1">Party</md-option>
@@ -43,7 +44,7 @@
                     <md-option value="2">Camping</md-option>
                   </md-select>
                 </md-input-container>
-                <md-input-container md-no-float="">
+                <md-input-container>
                   <md-icon md-svg-src=""></md-icon>
                   <input ng-model="Location" type="text" placeholder="Event Location">
                 </md-input-container>
@@ -64,20 +65,19 @@
                     <input ng-model="country">
                   </md-input-container>
                 </div>
-                <md-input-container md-no-float="" flex = "">
+                <md-input-container md-no-float="" layout>
                   <label>Start Date</label>
                   <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
                   <input ng-model="startdate" type="date" placeholder="Startdate">
                 </md-input-container>
-                <md-input-container md-no-float="">
+                <md-input-container>
                   <label>End Date</label>
                   <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
                   <input ng-model="enddate" type="date" placeholder="Enddate">
                 </md-input-container>
               </md-content>
             </div>
-            <!-- <md-button class="md-warn md-raised md-hue-2">Submit</md-button> -->
-            <div layout-align="center center">
+            <div layout layout-align="center center">
               <md-button class="md-warn md-raised md-hue-2">Submit</md-button>
             </div>
             </md-card>
