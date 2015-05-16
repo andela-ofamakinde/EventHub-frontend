@@ -3,8 +3,13 @@ var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute']);
 
 EventApp.config(['$routeProvider','$mdThemingProvider',
   function($routeProvider,$mdThemingProvider) {
+     var blackMap = $mdThemingProvider.extendPalette('red', {
+        '500': 'F8F8FF'
+      });
+   $mdThemingProvider.definePalette('black', blackMap);
+
     $mdThemingProvider.theme('default')
-    .primaryPalette('pink')
+    .primaryPalette('black')
     .accentPalette('orange');
 
     $routeProvider.

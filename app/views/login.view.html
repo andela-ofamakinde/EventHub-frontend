@@ -12,14 +12,14 @@
       <md-content layout-padding>
         <md-input-container md-no-float="">
           <md-icon md-svg-src="assets/images/ic_email_24px.svg" class="email"></md-icon>
-          <input ng-model="user.email" type="email" placeholder="Email" ng-required="true">
+          <input ng-model="email" type="email" placeholder="Email" ng-required="true">
         </md-input-container>
         <md-input-container md-no-float="">
           <md-icon md-svg-src="assets/images/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-          <input ng-model="user.address" type="text" placeholder="Password">
+          <input ng-model="password" type="text" placeholder="Password">
         </md-input-container>
         <div layout layout-align="center center">
-          <md-button class="md-accent md-raised md-hue-1">Submit</md-button>
+          <md-button class="md-accent md-raised md-hue-1" ng-click='signIn'>Submit</md-button>
         </div>
       </md-content>
     </md-card>
