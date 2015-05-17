@@ -20,4 +20,13 @@ angular.module('EventApp')
       });
     };
 
+    $scope.getEvents = function() {
+      EventFactory.getEvents(function(data){
+        $scope.data = data;
+        console.log(data);
+      }, function(err){
+
+      });
+    };
+
   }]);
