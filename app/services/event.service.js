@@ -14,7 +14,14 @@ angular.module('EventApp')
       $http.post(baseUrl + 'createevent', event)
         .success(success)
         .error(error);
-      }
-    };
+    },
+    getEvents : function(success, error) {
+      $http.get(baseUrl + 'allevents')
+      .success(success)
+      .error(error);
+    }
+
+  };
+
   return EventsFac; 
   }]);
