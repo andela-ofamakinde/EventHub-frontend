@@ -1,53 +1,46 @@
 "use strict";
-angular.module('EventApp').controller('UserCtrl', ['$rootscope', '$scope', '$location', '$localStorage', 'UserFactory' function($rootscope, $scope, $location, $localStorage, UserFactory ){
 
-   $scope.token = $localStorage.token;
+angular.module('EventApp')
+  .controller('UserCtrl', ['$rootScope', '$scope', '$location', 'UserFactory', '$localStorage', '$route', 
+    function($rootScope, $scope, $location, UserFactory, $localStorage, $route){
 
-    $scope.signUp = function() {
-      var formData = {
-        firstname: $scope.firstname,
-        lastname: $scope.lastname,
-        email: $scope.email,
-        password: $scope.password
+      $scope.toggle = false;
+
+      $scope.currentUser = UserFactory.currentUser;
+      console.log($scope.currentUser);
+
+      $scope.signUp = function() {
+        $scope.toggle = true;
+        UserFactory.signUp($scope.user, function(data) {
+          console.log(data);
+          $localStorage.token = data.token;
+          $location.path('/events');
+          $scope.$apply();
+        }, function(err) {
+          console.log(err);
+        });
       };
 
-      UserFactory.save(formData, function(res){
-        if(res.type == false) {
-          alert(res.data);
-        }else{
-          $localStorage.token = res.data.token;
-          window.location = '/';
-        }
-
-      }, function() {
-        $rootscope.error = 'failed to sign up';
-      })
-    };
-
-    $scope.signIn = function() {
-      var formData = {
-          email: $scope.email,
-          password: $scope.password
+      $scope.signIn = function(){
+        $scope.toggle = true;
+        UserFactory.signIn($scope.user, function(data) {
+          console.log(data);
+          $localStorage.token = data.token;
+          $location.path('/events');
+        },function(err) {
+          console.log(err);
+        });
       };
 
-      UserFactory.signIn(formData, function(res) {
-          if (res.type == false) {
-              alert(res.data);
-          } else {
-              $localStorage.token = res.data.token;
-              window.location = "/";    
-          }
-      }, function() {
-          $rootScope.error = 'Failed to sign in';
-      })
-  };
+      $scope.token = $localStorage.token;
 
-  $scope.logout = function() {
-    Main.logout(function() {
-        window.location = "/";
-    }, function() {
-        alert("Failed to logout!");
-    });
-  };
-
+      $scope.logOut = function() {
+        $location.path('/home');
+        $route.reload();
+        UserFactory.logOut(function(){
+          console.log('Yay');
+        }, function() {
+          console.log('err');
+        });
+      };
 }]);
