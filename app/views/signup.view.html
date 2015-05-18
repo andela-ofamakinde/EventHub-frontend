@@ -1,11 +1,11 @@
-<div ng-controller="UserCtrl" layout layout-align="center center"ng-app="EventApp">
+<div ng-controller="UserCtrl" layout layout-align="center center" ng-app="EventApp">
     <md-card flex='40'>
       <md-toolbar class="md-primary">
         <div class="md-toolbar-tools" class="md-actions" layout="row" layout-align="left">
-          <h1 class="md-toolbar-tools">Log In</h1>
-          <div class="md-actions" layout-align="center center">
+          <h1 class="md-toolbar-tools">Sign Up</h1>
+          <!-- <div class="md-actions" layout-align="center center">
             <a href = '#/home'>Home</a>
-          </div>
+          </div> -->
         </div>
       </md-toolbar>
       <md-content layout-padding>
@@ -26,7 +26,7 @@
           <input ng-model="user.password" type="password" placeholder="Password">
         </md-input-container>
         <div layout layout-align="center center">
-          <md-button class="md-accent md-raised md-hue-1">Submit</md-button>
+          <md-button class="md-accent md-raised md-hue-1" ng-click='signUp()'>Submit</md-button>
         </div>
       </md-content>
     </md-card>
