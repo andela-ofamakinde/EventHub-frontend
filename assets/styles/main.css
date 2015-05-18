@@ -7,3 +7,7 @@
   height: auto;
   position: fixed;
 }
+.sized {
+  width: 25%;
+  height: auto;
+}
