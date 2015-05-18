@@ -29,4 +29,17 @@ angular.module('EventApp')
       });
     };
 
+    $scope.joinEvent = function(id) {
+      var user = {
+        user: $scope.currentuser.firstname + " " + $scope.currentuser.lastname,
+        event_id: id
+      };
+
+      EventFactory.joinEvent(user, function(){
+
+      }, function(err){
+
+      });
+    };
+
   }]);
