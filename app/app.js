@@ -18,7 +18,14 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
     }).
     when('/events', {
       templateUrl: 'app/views/event.view.html',
-      controller: 'EventCtrl'
+      controller: 'EventCtrl',
+      resolve: {
+        currentUser: function(UserFactory, $location) {
+          if (Object.keys(UserFactory.currentUser).length === 0) {
+            $location.path('/signin');
+          } 
+        }
+      }
     }).
     when('/signup', {
       templateUrl: 'app/views/signup.view.html',
