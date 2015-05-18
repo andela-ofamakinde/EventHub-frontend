@@ -36,7 +36,6 @@ angular.module('EventApp')
 
       $scope.logOut = function() {
         $location.path('/home');
-        $route.reload();
         UserFactory.logOut(function(){
           console.log('Yay');
         }, function() {
