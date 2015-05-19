@@ -1,29 +1,23 @@
 "use strict";
 angular.module('EventApp')
-  .controller('EventCtrl', ['$scope', 'EventFactory', 'UserFactory', function($scope, EventFactory, UserFactory){
+  .controller('EventCtrl', ['$scope', 'EventFactory', 'UserFactory', 
+    function($scope, EventFactory, UserFactory){
 
-      $scope.currentuser = UserFactory.currentUser;
-    // EventFactory.getEvents()
-    // .success(function(data){
-    //   $scope.data = data;
-    // })
-    // .error(function(err){
-    // });
+    $scope.currentuser = UserFactory.currentUser;
 
     $scope.createEvent = function(){
       $scope.event.userId = $scope.currentuser._id;
-      console.log($scope.event);
       EventFactory.createEvent($scope.event, function(data){
-        console.log(data);
+      console.log(data);
       }, function(err){
-        console.log(err); 
+
       });
     };
 
     $scope.getEvents = function() {
       EventFactory.getEvents(function(data){
         $scope.data = data;
-        console.log(data);
+
       }, function(err){
 
       });
@@ -31,14 +25,14 @@ angular.module('EventApp')
 
     $scope.joinEvent = function(id) {
       var user = {
-        user: $scope.currentuser.firstname + " " + $scope.currentuser.lastname,
+        user_id: $scope.currentuser._id,
         event_id: id
       };
 
-      EventFactory.joinEvent(user, function(){
-
+      EventFactory.joinEvent(user, function(data){
+        console.log(data);
       }, function(err){
-
+          console.log(err);
       });
     };
 
