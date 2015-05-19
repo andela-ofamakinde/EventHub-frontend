@@ -17,8 +17,11 @@ angular.module('EventApp')
         delete $localStorage.token;
         success();
       },
-      currentUser: getUserFromToken()
+      currentUser: function() {
+        return getUserFromToken()
+      }
     };
+
 
     function urlBase64Decode(str) {
       var output = str.replace('-', '+').replace('_', '/');
