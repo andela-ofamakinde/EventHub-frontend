@@ -4,13 +4,10 @@ angular.module('EventApp')
     var baseUrl = 'https://event-hub.herokuapp.com/';
 
     var ApiRequest = {
-      signUp: function(user, success, error) {
-        $http.post(baseUrl + 'signup', user)
-          .success(success)
-          .error(error);
+      signUp: function(user) {
+        return $http.post(baseUrl + 'signup', user);
       },
       signIn: function(user, success, error) {
-        console.log(user);
         $http.post(baseUrl + 'signin', user)
           .success(success)
           .error(error);
