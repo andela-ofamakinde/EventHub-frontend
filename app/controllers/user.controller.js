@@ -5,15 +5,14 @@ angular.module('EventApp')
     function($rootScope, $scope, $location, UserFactory, $localStorage, $route, EventFactory){
 
       // $rootScope.isloggedin = false;
-      $scope.currentUser = UserFactory.currentUser;
 
       $scope.signUp = function() {
-        $rootScope.isloggedin =  true;
         UserFactory.signUp($scope.user).then(function(res) {
           console.log(res.data);
           $localStorage.token = resp.data.token;
-          // $rootScope.isloggedin =  true;
           if(resp.data.token){
+            $scope.currentUser = UserFactory.currentUser();
+            $rootScope.isloggedin =  true;
             $location.path('/events');
           }else{
             $location.path('/signup');
@@ -24,19 +23,25 @@ angular.module('EventApp')
       };
 
       $scope.signIn = function(){
-        $rootScope.isloggedin =  true;
-        UserFactory.signIn($scope.user, function(data) {
-          $location.path('/profile');
-          console.log(data);
-          $localStorage.token = data.token;
-        }, function(err) {
-          console.log(err);
+        UserFactory.signIn($scope.user, 
+          function(data) {
+            $localStorage.token = data.token;
+            if(data.token){
+              $rootScope.currentUser = UserFactory.currentUser();
+              console.log(UserFactory.currentUser());
+              $rootScope.isloggedin =  true;
+              $location.path('/profile');
+            }else{
+              $location.path('/signin');
+            }
+          }, 
+          function(err) {
         });
       };
 
       $scope.getEvent = function() {
         var eve = [];
-        $scope.events = $scope.currentUser.eventsCreated;
+        $scope.events = $rootScope.currentUser.eventsCreated;
         console.log($scope.events.length);
         for (var i = 0; i < $scope.events.length; i++) {
           EventFactory.getOneEvent($scope.events[i], function(data) {
