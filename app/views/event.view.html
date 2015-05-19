@@ -11,15 +11,15 @@
               <md-content layout-padding="" class="autoScroll">
                 <md-input-container>
                   <md-icon md-svg-icon="" class="name"></md-icon>
-                    <input ng-model="event.title" type="text" placeholder="Event Name/Title">
+                    <input ng-model="event.title" type="text" placeholder="Event Name/Title" required>
                 </md-input-container>
                 <md-input-container>
                   <md-icon md-svg-icon="" class="name"></md-icon>
-                  <textarea ng-model="event.description" type="text" placeholder="What is the Event about"></textarea>
+                  <textarea ng-model="event.description" type="text" placeholder="What is the Event about"required></textarea>
                 </md-input-container>
                 <md-input-container>
                   <md-icon md-svg-src="" ></md-icon>
-                  <md-select name="categories" placeholder="Please select a category" ng-model="event.category" required="">
+                  <md-select name="categories" placeholder="Please select a category" ng-model="event.category" required>
                     <md-option value="Party">Party</md-option>
                     <md-option value="Conference">Conference</md-option>
                     <md-option value="Sports">Sports</md-option>
@@ -31,7 +31,7 @@
                 </md-input-container>
                 <md-input-container>
                   <md-icon md-svg-src=""></md-icon>
-                  <input ng-model="event.location" type="text" placeholder="Event Location">
+                  <input ng-model="event.location" type="text" placeholder="Event Location" required>
                 </md-input-container>
                 <div layout="" layout-sm="column">
                   <md-input-container flex="">
@@ -53,12 +53,12 @@
                 <md-input-container md-no-float="" layout>
                   <label>Start Date</label>
                   <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
-                  <input ng-model="event.startdate" type="date" placeholder="Startdate">
+                  <input ng-model="event.startdate" type="date" placeholder="Startdate" required>
                 </md-input-container>
                 <md-input-container>
                   <label>End Date</label>
                   <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
-                  <input ng-model="event.enddate" type="date" placeholder="Enddate">
+                  <input ng-model="event.enddate" type="date" placeholder="Enddate" required>
                 </md-input-container>
               </md-content>
             </div>
@@ -85,7 +85,7 @@
                 <p>Event Starts: {{info.startdate | date: mm:dd:yy}}</p>
                 <p>Event Ends: {{info.enddate | date: mm:dd:yy}}</p>
                 <div class="md-actions" layout="row" layout-align="end center">
-                <md-button ng-click="joinEvent(info._id)">Join Event</md-button>
+                <md-button ng-click="joinEvent()">Join Event</md-button>
                 </div>
               </div>
               </md-card-content>             
