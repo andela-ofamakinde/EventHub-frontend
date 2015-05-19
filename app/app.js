@@ -3,10 +3,6 @@ var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute', 'ngStorage']
 
 EventApp.config(['$routeProvider','$mdThemingProvider',
   function($routeProvider,$mdThemingProvider) {
-   //   var blackMap = $mdThemingProvider.extendPalette('red', {
-   //      '500': 'F8F8FF'
-   //    });
-   // $mdThemingProvider.definePalette('black', blackMap);
 
     $mdThemingProvider.theme('default')
     .primaryPalette('red')
@@ -19,13 +15,6 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
     when('/events', {
       templateUrl: 'app/views/event.view.html',
       controller: 'EventCtrl',
-      resolve: {
-        currentUser: function(UserFactory, $location) {
-          if (Object.keys(UserFactory.currentUser).length === 0) {
-            $location.path('/signin');
-          } 
-        }
-      }
     }).
     when('/signup', {
       templateUrl: 'app/views/signup.view.html',
@@ -33,6 +22,10 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
     }).
     when('/login', {
       templateUrl: 'app/views/login.view.html',
+      controller: 'UserCtrl'
+    }).
+    when('/profile', {
+      templateUrl: 'app/views/user.profile.html',
       controller: 'UserCtrl'
     }).
      otherwise({
@@ -45,7 +38,7 @@ EventApp.config(function($httpProvider) {
     function($q, $location, $localStorage) {
     return {
     'request': function (config) {
-      console.log(config);
+      // console.log(config);
       config.headers = config.headers || {};
       if ($localStorage.token) {
           config.headers.Authorization = 'Bearer ' + $localStorage.token;
@@ -54,7 +47,7 @@ EventApp.config(function($httpProvider) {
     },
     'responseError': function(response) {
       if(response.status === 401 || response.status === 403) {
-          $location.path('/signin');
+          $location.path('/login');
       }
       return $q.reject(response);
     }
