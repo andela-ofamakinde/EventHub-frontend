@@ -15,10 +15,10 @@
         <h2 class="md-toolbar-tools"> EventHUB </h2>
       </span>
       <span>
-        <md-button class="md-raised md-primary" href="#/signup" ng-show="!token"> SignUp </md-button>
-        <md-button class="md-raised md-primary" href="#/login" ng-show="!token"> LogIn </md-button>
+        <md-button class="md-raised md-primary" href="#/signup" ng-hide="isloggedin"> SignUp </md-button>
+        <md-button class="md-raised md-primary" href="#/login" ng-hide="isloggedin"> LogIn </md-button>
         <md-button class="md-raised md-primary" href="#/events"> Events </md-button>
-        <md-button class="md-raised md-primary" href="" ng-click="logOut()" ng-hide="!token"> Logout </md-button>
+        <md-button class="md-raised md-primary" href="" ng-click="logOut()" ng-show="isloggedin"> Logout </md-button>
 
         <!-- <md-button class="md-raised md-primary" ng-click='logOut()'> Logout</md-button> -->
       </span>
