@@ -11,29 +11,33 @@ angular.module('EventApp')
         .success(success)
         .error(error);
     },
+
     getEvents : function(success, error) {
-      $http.get(BASE_URL + 'allevents')
-      .success(success)
-      .error(error);
+      return $http.get(BASE_URL + 'allevents');
     },
 
     getUserEvents: function(userid) {
       return $http.get(BASE_URL + 'events/' + userid);
     },
 
-    joinEvent : function(user, success, error) {
-      $http.post(BASE_URL+ 'allevents/' + user.event_id + '/joinevent', user.user)
-      .success(success)
-      .error(error);
+    getEventsJoined: function(userid) {
+      return $http.get(BASE_URL + 'events/' + userid + '/joined');
     },
+
+    joinEvent : function(eventid) {
+      return $http.post(BASE_URL + eventid + '/joinevent');
+    },
+
     getOneEvent: function(event_id) {
       return $http.get(BASE_URL +'event/' + event_id);
     },
+
     deleteOneEvent: function(event_id){
       return $http.delete(BASE_URL + 'event/'+event_id);
     },
-    updateEvent: function(event_id) {
-      return $http.put(BASE_URL + event_id);
+
+    updateEvent: function(event_id, event) {
+      return $http.put(BASE_URL + 'event/' + event_id, event);
     }
   };
 
