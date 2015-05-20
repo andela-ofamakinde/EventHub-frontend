@@ -24,9 +24,19 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
       templateUrl: 'app/views/login.view.html',
       controller: 'UserCtrl'
     }).
+    when('/editpage/:event_id', {
+      templateUrl: 'app/views/editevent.view.html',
+      controller: 'EditCtrl'
+    }).
     when('/profile', {
       templateUrl: 'app/views/user.profile.html',
-      controller: 'UserCtrl'
+      controller: 'ProfileCtrl',
+      resolve: {
+        UserEvents: function(UserFactory, EventFactory) {
+          var currentUser = UserFactory.currentUser();
+          return EventFactory.getUserEvents(currentUser._id);
+        }
+      }
     }).
      otherwise({
       redirectTo: '/home'
