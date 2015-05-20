@@ -7,9 +7,6 @@ angular.module('EventApp')
     var token  = $localStorage.token;
     if(token){
       $rootScope.isloggedin =  true;
-      //$location.path('/profile');
-    } else{
-      //$location.path('/signin');
     }
 
     var ApiRequest = {
