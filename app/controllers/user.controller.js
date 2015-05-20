@@ -27,7 +27,6 @@ angular.module('EventApp')
             $localStorage.token = data.token;
             if(data.token){
               $scope.currentUser = UserFactory.currentUser();
-              console.log($scope.currentUser);
               $rootScope.isloggedin =  true;
               $location.path('/profile');
             } else{
@@ -37,17 +36,6 @@ angular.module('EventApp')
           function(err) {
         });
       };
-
-      // $scope.joinEvent = function(){
-      //   var  evnt = [];
-      //   $scope.joinevent = $scope.currentUser.eventsJoined;
-
-      //   EventFactory.joinevent($scope.joinevent, function(data) {
-      //     evnt.push(data);
-      //   }, function(err) {
-      //     console.log(err);
-      //   });
-      // };
 
       $scope.token = $localStorage.token;
 
