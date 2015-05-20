@@ -1,14 +1,16 @@
 "use strict";
 angular.module('EventApp')
-  .controller('EventCtrl', ['$scope', 'EventFactory', 'UserFactory', 
-    function($scope, EventFactory, UserFactory){
-
-    $scope.currentuser = UserFactory.currentUser;
+  .controller('EventCtrl', ['$rootScope','$scope', '$location','EventFactory', 'UserFactory', 
+    function($rootScope,$scope, $location, EventFactory, UserFactory){
 
     $scope.createEvent = function(){
+      $scope.currentuser = UserFactory.currentUser();
       $scope.event.userId = $scope.currentuser._id;
+      console.log($scope.event.userId);
       EventFactory.createEvent($scope.event, function(data){
-      console.log(data);
+        console.log(data);
+        $rootScope.isloggedin =  true;
+        $location.path('/profile');
       }, function(err){
 
       });
@@ -17,7 +19,6 @@ angular.module('EventApp')
     $scope.getEvents = function() {
       EventFactory.getEvents(function(data){
         $scope.data = data;
-
       }, function(err){
 
       });
@@ -33,6 +34,16 @@ angular.module('EventApp')
         console.log(data);
       }, function(err){
           console.log(err);
+      });
+    };
+
+    $scope.deleteEvent = function(event_id, index){
+      EventFactory.deleteOneEvent(event_id)
+      .success(function(data){
+        $rootScope.eventlist.splice(index, 1);
+      })
+      .error(function(err){
+
       });
     };
 
