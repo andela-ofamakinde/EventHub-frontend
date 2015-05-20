@@ -19,6 +19,7 @@ module.exports = function(config) {
     'libs/angular-route/angular-route.js',
     'libs/angular-mocks/angular-mocks.js',
     'tests/unit/controllers/controller.test.js',
+    'tests/unit/routes/routes.test.js',
     'app/*.js'
     ],
 

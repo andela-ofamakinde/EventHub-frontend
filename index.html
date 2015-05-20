@@ -15,10 +15,11 @@
         <h2 class="md-toolbar-tools"> EventHUB </h2>
       </span>
       <span>
-        <md-button class="md-raised md-primary" href="#/signup" ng-show="!token"> SignUp </md-button>
-        <md-button class="md-raised md-primary" href="#/login" ng-show="!token"> LogIn </md-button>
+        <md-button class="md-raised md-primary" href="#/signup" ng-hide="isloggedin"> SignUp </md-button>
+        <md-button class="md-raised md-primary" href="#/login" ng-hide="isloggedin"> LogIn </md-button>
         <md-button class="md-raised md-primary" href="#/events"> Events </md-button>
-        <md-button class="md-raised md-primary" href="" ng-click="logOut()" ng-hide="!token"> Logout </md-button>
+        <md-button class="md-raised md-primary" href="" ng-click="logOut()" ng-show="isloggedin"> Logout </md-button>
+        <md-button class="md-raised md-primary" href="#/profile" ng-show="isloggedin">My Pofile</md-button>
 
         <!-- <md-button class="md-raised md-primary" ng-click='logOut()'> Logout</md-button> -->
       </span>
@@ -35,6 +36,8 @@
   <script type="text/javascript" src="app/app.js"></script>
   <script type="text/javascript" src="app/controllers/event.controller.js"></script>
   <script type="text/javascript" src="app/controllers/user.controller.js"></script>
+  <script type="text/javascript" src="app/controllers/profile.controller.js"></script>
+  <script type="text/javascript" src="app/controllers/edit.controller.js"></script>
   <script type="text/javascript" src="app/services/event.service.js"></script>
   <script type="text/javascript" src="app/services/user.service.js"></script>
 

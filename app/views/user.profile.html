@@ -1,0 +1,27 @@
+<div >
+  <h1>Welcome {{currentUser.firstname}}</h1>
+<div>
+  <h3>{{currentUser.email}}</h3>
+  <div>Events Created</div>
+  <div ng-init="getEvent()">
+    <ul ng-repeat="event in eventlist">
+      <li>Title: {{event.title}}</li>
+      <li>Description: {{event.description}}</li>
+      <li>Location: {{event.location}}</li>
+      <li>Event Starts: {{event.startdate}}</li>
+      <li>Event Ends: {{event.enddate}}</li>
+      <md-button class="md-raised" href="#/editpage/{{event._id}}">Edit Event</md-button>
+      <md-button ng-controller="EventCtrl" class="md-raised" href="" ng-click="deleteEvent(event._id, $index)">Delete Event</md-button>
+    </ul>
+  </div>
+</div>
+
+<div>Events Joined</div>
+<ul ng-repeat= "event in joinedevent">
+  <li>Title: {{event.title}}</li>
+    <li>Description: {{event.description}}</li>
+    <li>Location: {{event.location}}</li>
+    <li>Event Starts: {{event.startdate}}</li>
+    <li>Event Ends: {{event.enddate}}</li>
+</ul>
+

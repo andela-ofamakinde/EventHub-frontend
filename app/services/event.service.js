@@ -2,30 +2,42 @@
 
 angular.module('EventApp')
 .factory('EventFactory',['$http', function($http){
-  var baseUrl = 'https://event-hub.herokuapp.com/';
-  var localUrl = 'http://localhost:5000/';
+  // var BASE_URL = 'https://event-hub.herokuapp.com/';
+  var BASE_URL = 'http://localhost:5000/';
+
   var EventsFac = {
-    // getEvents :function(){
-    //   return $http.get(baseUrl + '/allevents');
-    // },
-    // getOneEvent : function(){
-    //   return $http.get(baseUrl + '/allevents/:event_id');
-    // },
     createEvent: function(event, success, error) {
-      $http.post(baseUrl + 'createevent', event)
+      $http.post(BASE_URL + 'createevent', event)
         .success(success)
         .error(error);
     },
+
     getEvents : function(success, error) {
-      $http.get(baseUrl + 'allevents')
-      .success(success)
-      .error(error);
+      return $http.get(BASE_URL + 'allevents');
     },
-    joinEvent : function(user, success, error) {
-      console.log(user);
-      $http.post(localUrl+ 'allevents/' + user.event_id + '/joinevent', user.user)
-      .success(success)
-      .error(error);
+
+    getUserEvents: function(userid) {
+      return $http.get(BASE_URL + 'events/' + userid);
+    },
+
+    getEventsJoined: function(userid) {
+      return $http.get(BASE_URL + 'events/' + userid + '/joined');
+    },
+
+    joinEvent : function(eventid) {
+      return $http.post(BASE_URL + eventid + '/joinevent');
+    },
+
+    getOneEvent: function(event_id) {
+      return $http.get(BASE_URL +'event/' + event_id);
+    },
+
+    deleteOneEvent: function(event_id){
+      return $http.delete(BASE_URL + 'event/'+event_id);
+    },
+
+    updateEvent: function(event_id, event) {
+      return $http.put(BASE_URL + 'event/' + event_id, event);
     }
   };
 
