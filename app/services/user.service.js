@@ -1,14 +1,23 @@
 "use strict";
 angular.module('EventApp')
-  .factory('UserFactory', ['$http', '$localStorage', function($http, $localStorage) {
-    var baseUrl = 'https://event-hub.herokuapp.com/';
+  .factory('UserFactory', ['$rootScope', '$http', '$localStorage', function($rootScope, $http, $localStorage) {
+    // var BASE_URL = 'https://event-hub.herokuapp.com/';
+    var BASE_URL = 'http://localhost:5000/';
+
+    var token  = $localStorage.token;
+    if(token){
+      $rootScope.isloggedin =  true;
+      //$location.path('/profile');
+    } else{
+      //$location.path('/signin');
+    }
 
     var ApiRequest = {
       signUp: function(user) {
-        return $http.post(baseUrl + 'signup', user);
+        return $http.post(BASE_URL + 'signup', user);
       },
       signIn: function(user, success, error) {
-        $http.post(baseUrl + 'signin', user)
+        $http.post(BASE_URL + 'signin', user)
           .success(success)
           .error(error);
       },
@@ -18,10 +27,9 @@ angular.module('EventApp')
         success();
       },
       currentUser: function() {
-        return getUserFromToken()
+        return getUserFromToken();
       }
     };
-
 
     function urlBase64Decode(str) {
       var output = str.replace('-', '+').replace('_', '/');
@@ -53,6 +61,6 @@ angular.module('EventApp')
     function changeUser(user) {
       angular.extend(ApiRequest.currentUser, user);
     }
-
     return ApiRequest;
+
   }]);
