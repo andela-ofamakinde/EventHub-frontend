@@ -32,6 +32,10 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
       templateUrl: 'app/views/user.profile.html',
       controller: 'ProfileCtrl',
       resolve: {
+        JoinEvents: function(UserFactory, EventFactory) {
+          var currentUser = UserFactory.currentUser();
+          return EventFactory.getEventsJoined(currentUser._id);
+        },
         UserEvents: function(UserFactory, EventFactory) {
           var currentUser = UserFactory.currentUser();
           return EventFactory.getUserEvents(currentUser._id);
@@ -48,10 +52,9 @@ EventApp.config(function($httpProvider) {
     function($q, $location, $localStorage) {
     return {
     'request': function (config) {
-      // console.log(config);
       config.headers = config.headers || {};
       if ($localStorage.token) {
-          config.headers.Authorization = 'Bearer ' + $localStorage.token;
+        config.headers['x-access-token'] = $localStorage.token;
       }
       return config;
     },
