@@ -4,19 +4,18 @@ angular.module('EventApp')
     function($routeParams,$scope, $location, EventFactory){
       EventFactory.getOneEvent($routeParams.event_id)
       .success(function(data){
+        data.startdate = new Date(data.startdate);
+        data.enddate = new Date(data.enddate);
         $scope.event = data;
       });
 
-    $scope.updateEvent = function(event_id) {
-     EventFactory.updateEvent($routeParams.event_id)
-     .success(function (data) {
-        console.log(data);
-        
-     })
-     .error(function (error){
-        console.log(error);
-     });
-    };
+      $scope.updateEvent = function(event_id, event) {
+       EventFactory.updateEvent($routeParams.event_id, event)
+       .success(function (data) {
 
+       })
+       .error(function (error){
 
+       });
+      };
   }]);

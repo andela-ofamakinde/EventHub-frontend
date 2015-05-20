@@ -6,34 +6,30 @@ angular.module('EventApp')
     $scope.createEvent = function(){
       $scope.currentuser = UserFactory.currentUser();
       $scope.event.userId = $scope.currentuser._id;
-      console.log($scope.event.userId);
       EventFactory.createEvent($scope.event, function(data){
-        console.log(data);
         $rootScope.isloggedin =  true;
         $location.path('/profile');
       }, function(err){
-
       });
     };
 
     $scope.getEvents = function() {
-      EventFactory.getEvents(function(data){
-        $scope.data = data;
-      }, function(err){
-
-      });
+      EventFactory.getEvents()
+      .success(function(data){
+        $scope.events = data;
+      })
+      .error(function(error){
+      }); 
     };
 
-    $scope.joinEvent = function(id) {
-      var user = {
-        user_id: $scope.currentuser._id,
-        event_id: id
-      };
+    $scope.joinEvent = function(eventid) {
+      EventFactory.joinEvent(eventid)
+      .success(function(data){
 
-      EventFactory.joinEvent(user, function(data){
-        console.log(data);
-      }, function(err){
-          console.log(err);
+        $location.path('/profile');
+      })
+      .error(function(err){
+
       });
     };
 
