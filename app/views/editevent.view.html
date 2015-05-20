@@ -1,0 +1,63 @@
+<div>
+  <p>To create an event fill the form below and CLICK on SUBMIT</p>
+      <md-card flex='40'>
+      <div layout="column" class="inputdemoIcons">
+        <md-content layout-padding="" class="autoScroll">
+          <md-input-container>
+            <md-icon md-svg-icon="" class="name"></md-icon>
+              <input ng-model="event.title" type="text" placeholder="Event Name/Title" required>
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-icon="" class="name"></md-icon>
+            <textarea ng-model="event.description" type="text" placeholder="What is the Event about"required></textarea>
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-src="" ></md-icon>
+            <md-select name="categories" placeholder="Please select a category" ng-model="event.category" required>
+              <md-option value="Party">Party</md-option>
+              <md-option value="Conference">Conference</md-option>
+              <md-option value="Sports">Sports</md-option>
+              <md-option value="Religious">Religious</md-option>
+              <md-option value="SummerVacation">Summer Vacation</md-option>
+              <md-option value="Camping">Camping</md-option>
+              <md-option value="Reunion">Reunion</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-src=""></md-icon>
+            <input ng-model="event.location" type="text" placeholder="Event Location" required>
+          </md-input-container>
+          <div layout="" layout-sm="column">
+            <md-input-container flex="">
+              <md-icon md-svg-src="" ></md-icon>
+              <label>City</label>
+              <input ng-model="event.city">
+            </md-input-container>
+            <md-input-container flex="">
+              <md-icon md-svg-src="" ></md-icon>
+              <label>State</label>
+              <input ng-model="event.state">
+            </md-input-container>
+            <md-input-container flex="">
+              <md-icon md-svg-src="" ></md-icon>
+              <label>Country</label>
+              <input ng-model="event.country">
+            </md-input-container>
+          </div>
+          <md-input-container md-no-float="" layout>
+            <label>Start Date</label>
+            <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
+            <!-- <input ng-model="event.startdate" type="date" placeholder="Startdate" required> -->
+          </md-input-container>
+          <md-input-container>
+            <label>End Date</label>
+            <md-icon md-svg-src="" style="display:inline-block;"></md-icon>
+            <!-- <input ng-model="event.enddate" type="date" placeholder="Enddate" required> -->
+          </md-input-container>
+        </md-content>
+      </div>
+      <div layout layout-align="center center">
+        <md-button class="md-warn md-raised md-hue-2" ng-click="updateEvent(event._id)">Save</md-button>
+      </div>
+  </md-card>
+</div>
