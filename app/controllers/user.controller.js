@@ -4,13 +4,11 @@ angular.module('EventApp')
   .controller('UserCtrl', ['$rootScope', '$scope', '$location', 'UserFactory', '$localStorage', '$route', 'EventFactory',
     function($rootScope, $scope, $location, UserFactory, $localStorage, $route, EventFactory){
 
-      // $rootScope.isloggedin = false;
-
       $scope.signUp = function() {
         UserFactory.signUp($scope.user).then(function(res) {
           console.log(res.data);
-          $localStorage.token = resp.data.token;
-          if(resp.data.token){
+          $localStorage.token = res.data.token;
+          if(res.data.token){
             $scope.currentUser = UserFactory.currentUser();
             $rootScope.isloggedin =  true;
             $location.path('/events');
@@ -25,33 +23,19 @@ angular.module('EventApp')
       $scope.signIn = function(){
         UserFactory.signIn($scope.user, 
           function(data) {
+            console.log(data);
             $localStorage.token = data.token;
             if(data.token){
-              $rootScope.currentUser = UserFactory.currentUser();
-              console.log(UserFactory.currentUser());
+              $scope.currentUser = UserFactory.currentUser();
+              console.log($scope.currentUser);
               $rootScope.isloggedin =  true;
               $location.path('/profile');
-            }else{
+            } else{
               $location.path('/signin');
             }
           }, 
           function(err) {
         });
-      };
-
-      $scope.getEvent = function() {
-        var eve = [];
-        $scope.events = $rootScope.currentUser.eventsCreated;
-        console.log($scope.events.length);
-        for (var i = 0; i < $scope.events.length; i++) {
-          EventFactory.getOneEvent($scope.events[i], function(data) {
-            eve.push(data);
-          }, function(err){
-            console.log(err);
-          });
-        }
-
-        $scope.events = eve;
       };
 
       // $scope.joinEvent = function(){
@@ -65,15 +49,14 @@ angular.module('EventApp')
       //   });
       // };
 
-
       $scope.token = $localStorage.token;
 
       $scope.logOut = function() {
-        // $rootScope.isloggedin =  false;
+        $scope.currentUser = UserFactory.currentUser();
         $location.path('/home');
         UserFactory.logOut(function(){
+          $rootScope.isloggedin =  false;
         }, function() {
-          // console.log(err);
         });
       };
 }]);
