@@ -72,9 +72,12 @@
         <md-tab label="Join Event" ng-init="getEvents()">
           <md-content class="md-padding">
             <h1 class="md-display-2">Join An Event</h1>
+            <md-input-container>
+              <input ng-model = 'search.category' type="text">
+            </md-input-container>
             <p>All Event categories</p>
 
-            <div class="md-padding" layout="row" layout-margin layout-fill layout-padding ng-repeat="info in data">
+            <div class="md-padding" layout="row" layout-margin layout-fill layout-padding ng-repeat="info in data | filter: search:category">
             <md-card class="sized">
               <img ng-src="assets/images/events3.jpeg" class="md-card-image" alt="Washed Out">
               <md-card-content>
