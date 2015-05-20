@@ -24,9 +24,11 @@ angular.module('EventApp')
         UserFactory.signIn($scope.user, 
           function(data) {
             console.log(data);
+
             $localStorage.token = data.token;
             if(data.token){
               $scope.currentUser = UserFactory.currentUser();
+               console.log($scope.currentUser);
               $rootScope.isloggedin =  true;
               $location.path('/profile');
             } else{

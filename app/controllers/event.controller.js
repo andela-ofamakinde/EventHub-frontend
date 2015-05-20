@@ -16,6 +16,8 @@ angular.module('EventApp')
     $scope.getEvents = function() {
       EventFactory.getEvents()
       .success(function(data){
+        data.startdate = new Date(data.startdate);
+        data.enddate = new Date(data.enddate);
         $scope.events = data;
       })
       .error(function(error){
