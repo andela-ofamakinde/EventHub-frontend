@@ -1,8 +1,8 @@
 "use strict";
 angular.module('EventApp')
   .factory('UserFactory', ['$rootScope', '$http', '$localStorage', function($rootScope, $http, $localStorage) {
-    // var BASE_URL = 'https://event-hub.herokuapp.com/';
-    var BASE_URL = 'http://localhost:5000/';
+    var BASE_URL = 'https://event-hub.herokuapp.com/';
+    // var BASE_URL = 'http://localhost:5000/';
 
     var token  = $localStorage.token;
     if(token){
@@ -25,6 +25,9 @@ angular.module('EventApp')
       },
       currentUser: function() {
         return getUserFromToken();
+      },
+      updateUser: function(user, success, error) {
+      return $http.put(BASE_URL + 'user/' + user._id, user);
       }
     };
 

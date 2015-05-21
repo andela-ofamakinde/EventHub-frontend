@@ -12,7 +12,7 @@ angular.module('EventApp')
       $scope.updateEvent = function(event_id, event) {
        EventFactory.updateEvent($routeParams.event_id, event)
        .success(function (data) {
-
+        $location.path('/profile');
        })
        .error(function (error){
 

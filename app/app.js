@@ -1,5 +1,5 @@
 "use strict";
-var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute', 'ngStorage']);
+var EventApp = angular.module('EventApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'RelativeDate']);
 
 EventApp.config(['$routeProvider','$mdThemingProvider',
   function($routeProvider,$mdThemingProvider) {
@@ -22,7 +22,15 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
     }).
     when('/login', {
       templateUrl: 'app/views/login.view.html',
-      controller: 'UserCtrl'
+      controller: 'UserCtrl',
+      resolve: {
+        isAllowed: function(UserFactory, $location) {
+          var currentUser = UserFactory.currentUser();
+          if (Object.keys(currentUser).length > 0) {
+            $location.path('/profile');
+          } 
+        }
+      }
     }).
     when('/editpage/:event_id', {
       templateUrl: 'app/views/editevent.view.html',
@@ -39,8 +47,18 @@ EventApp.config(['$routeProvider','$mdThemingProvider',
         UserEvents: function(UserFactory, EventFactory) {
           var currentUser = UserFactory.currentUser();
           return EventFactory.getUserEvents(currentUser._id);
+        },
+        isAllowed: function(UserFactory, $location) {
+          var currentUser = UserFactory.currentUser();
+          if (Object.keys(currentUser).length === 0) {
+            $location.path('/login');
+          } 
         }
       }
+    }).
+    when('/editprofile', {
+      templateUrl: 'app/views/editprofile.view.html',
+      controller: 'EditProfCtrl'
     }).
      otherwise({
       redirectTo: '/home'
@@ -67,3 +85,4 @@ EventApp.config(function($httpProvider) {
     };
   }]);
 });
+

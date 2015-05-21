@@ -1,8 +1,10 @@
 "use strict";
 
 angular.module('EventApp')
-  .controller('UserCtrl', ['$rootScope', '$scope', '$location', 'UserFactory', '$localStorage', '$route', 'EventFactory',
-    function($rootScope, $scope, $location, UserFactory, $localStorage, $route, EventFactory){
+  .controller('UserCtrl', ['$rootScope', '$scope', '$location', 'UserFactory', '$localStorage', '$route', 'EventFactory', '$mdToast', 
+    function($rootScope, $scope, $location, UserFactory, $localStorage, $route, EventFactory, $mdToast){
+
+      $scope.currentUser = UserFactory.currentUser();
 
       $scope.signUp = function() {
         UserFactory.signUp($scope.user).then(function(res) {
@@ -27,6 +29,7 @@ angular.module('EventApp')
             $localStorage.token = data.token;
             if(data.token){
               $scope.currentUser = UserFactory.currentUser();
+               console.log($scope.currentUser);
               $rootScope.isloggedin =  true;
               $location.path('/profile');
             } else{
