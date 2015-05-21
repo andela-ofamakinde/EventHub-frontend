@@ -2,6 +2,6 @@
 describe('start page', function() {
   browser.get('/');
   it('should connect to homeview page' , function(){
-    expect(browser.getLocationAbsUrl()).toBe("/");
+    expect(browser.getLocationAbsUrl()).toBe("/home");
   });
 });

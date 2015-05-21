@@ -2,8 +2,8 @@
 
 angular.module('EventApp')
 .factory('EventFactory',['$http', function($http){
-  // var BASE_URL = 'https://event-hub.herokuapp.com/';
-  var BASE_URL = 'http://localhost:5000/';
+  var BASE_URL = 'https://event-hub.herokuapp.com/';
+  // var BASE_URL = 'http://localhost:5000/';
 
   var EventsFac = {
     createEvent: function(event, success, error) {
@@ -25,7 +25,7 @@ angular.module('EventApp')
     },
 
     joinEvent : function(eventid) {
-      return $http.post(BASE_URL + eventid + '/joinevent');
+      return $http.post(BASE_URL + 'event/' + eventid + '/joinevent');
     },
 
     getOneEvent: function(event_id) {

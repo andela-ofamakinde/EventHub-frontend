@@ -2,26 +2,53 @@
   <h1>Welcome {{currentUser.firstname}}</h1>
 <div>
   <h3>{{currentUser.email}}</h3>
-  <div>Events Created</div>
-  <div ng-init="getEvent()">
-    <ul ng-repeat="event in eventlist">
-      <li>Title: {{event.title}}</li>
-      <li>Description: {{event.description}}</li>
-      <li>Location: {{event.location}}</li>
-      <li>Event Starts: {{event.startdate}}</li>
-      <li>Event Ends: {{event.enddate}}</li>
-      <md-button class="md-raised" href="#/editpage/{{event._id}}">Edit Event</md-button>
-      <md-button ng-controller="EventCtrl" class="md-raised" href="" ng-click="deleteEvent(event._id, $index)">Delete Event</md-button>
-    </ul>
-  </div>
 </div>
 
-<div>Events Joined</div>
-<ul ng-repeat= "event in joinedevent">
-  <li>Title: {{event.title}}</li>
-    <li>Description: {{event.description}}</li>
-    <li>Location: {{event.location}}</li>
-    <li>Event Starts: {{event.startdate}}</li>
-    <li>Event Ends: {{event.enddate}}</li>
-</ul>
+<div class="tabsdemoDynamicHeight">
+  <md-content class="md-padding">
+    <md-tabs md-dynamic-height="" md-border-bottom="">
+      <md-tab label="EVENTS CREATED" ng-if="isloggedin === true">
+        <div class="container-fluid">
+          <div class="row">
+          <h1 class="col-md-offset-5">Events Created</h1>
+          <div class="col-md-3" ng-repeat="event in eventlist">
+            <div class="thumbnail">
+              <img src='/assets/images/events3.jpeg'>
+              <div class="caption">
+                <h3>Title: {{event.title}}</h3>
+                <p>Description: {{event.description}}</p>
+                <p>Location: {{event.location}}</p>
+                <p>Event Starts: {{event.startdate | friendlyDate}}</p>
+                <p>Event Ends: {{event.enddate | friendlyDate}}</p>
+                <p>
+                <a href="#/editpage/{{event._id}}" class="btn btn-info" role="button">Edit</a> 
+                <a href="" ng-controller="EventCtrl" class="btn btn-primary" role="button" ng-click="deleteEvent(event._id, $index)">delete</a>
+                </p>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </md-tab>
 
+      <md-tab label="EVENTS JOINED" ng-if="isloggedin === true">
+      <div class="row">
+        <h1 class="col-md-offset-5">Events Joined</h1>
+          <div class="col-md-3" ng-repeat="event in joinedevent">
+            <div class="thumbnail">
+              <img src='/assets/images/events2.jpeg'>
+              <div class="caption">
+              <h3>Title: {{event.title}}</h3>
+              <p>Description: {{event.description}}</p>
+              <p>Location: {{event.location}}</p>
+              <p>Event Starts: {{event.startdate | friendlyDate}}</p>
+              <p>Event Ends: {{event.enddate | friendlyDate}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </md-tab>
+      
+    </md-tabs>
+  </md-content>
+</div>
