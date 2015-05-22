@@ -2,22 +2,29 @@
 angular.module('EventApp')
   .controller('EventCtrl', ['$rootScope','$scope', '$location','EventFactory', 'UserFactory', 
     function($rootScope,$scope, $location, EventFactory, UserFactory){
-
+      
     $scope.createEvent = function(){
       $scope.currentuser = UserFactory.currentUser();
       $scope.event.userId = $scope.currentuser._id;
-      EventFactory.createEvent($scope.event, function(data){
+      EventFactory.createEvent($scope.event)
+      .success(function(data){
         $rootScope.isloggedin =  true;
         $location.path('/profile');
-      }, function(err){
+      })
+      .error(function(error){
+        console.log(error);
       });
+      
+      // EventFactory.createEvent($scope.event, function(data){
+      //   $rootScope.isloggedin =  true;
+      //   $location.path('/profile');
+      // }, function(err){
+      // });
     };
 
     $scope.getEvents = function() {
       EventFactory.getEvents()
       .success(function(data){
-        data.startdate = new Date(data.startdate);
-        data.enddate = new Date(data.enddate);
         $scope.events = data;
       })
       .error(function(error){
