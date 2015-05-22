@@ -23,10 +23,9 @@ angular.module('EventApp')
       };
 
       $scope.signIn = function(){
-        UserFactory.signIn($scope.user, 
-          function(data) {
-            console.log(data);
-            $localStorage.token = data.token;
+        UserFactory.signIn($scope.user)
+        .success(function (data) {
+          $localStorage.token = data.token;
             if(data.token){
               $scope.currentUser = UserFactory.currentUser();
                console.log($scope.currentUser);
@@ -35,11 +34,12 @@ angular.module('EventApp')
             } else{
               $location.path('/signin');
             }
-          }, 
-          function(err) {
+        })
+        .error(function (error) {
+          console.log(error);
         });
       };
-
+      
       $scope.token = $localStorage.token;
 
       $scope.logOut = function() {

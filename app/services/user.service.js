@@ -14,9 +14,7 @@ angular.module('EventApp')
         return $http.post(BASE_URL + 'signup', user);
       },
       signIn: function(user, success, error) {
-        $http.post(BASE_URL + 'signin', user)
-          .success(success)
-          .error(error);
+        return $http.post(BASE_URL + 'signin', user);
       },
       logOut: function(success) {
         changeUser({});

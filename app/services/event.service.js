@@ -6,10 +6,8 @@ angular.module('EventApp')
   // var BASE_URL = 'http://localhost:5000/';
 
   var EventsFac = {
-    createEvent: function(event, success, error) {
-      $http.post(BASE_URL + 'createevent', event)
-        .success(success)
-        .error(error);
+    createEvent: function(event) {
+      return $http.post(BASE_URL + 'createevent', event);
     },
 
     getEvents : function(success, error) {
